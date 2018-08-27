@@ -6,5 +6,8 @@
 To get started  
 - Run `bin/setup` to install dependencies
 - In one terminal run `yarn start`
-- In a second termimal run `yarn ios`
+- In a second termimal run `yarn ios` or `yarn android`
+
+
+- In a third terminal run `yarn start-api-server`
 
