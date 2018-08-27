@@ -29,6 +29,8 @@ Users should be able to scroll through the genres.
 
 Another thing to note is that the Genres will NEVER change. 
 
+https://github.com/TimelineInteractive/react-native-interview/blob/master/screen-images/genres-list.png
+
 
 
 
