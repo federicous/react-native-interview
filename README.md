@@ -19,17 +19,9 @@ In total that means you'll need 3 termimals.
 
 Next are the requirements. It will be helpful to read all the requirements before beginning.
 
-1. Create a screen that displays a list of genres.
-
-The endpoint http://localhost/genres is already provided for you.
-
-You can style the list any way that you like. You will need to make sure that each list item has some kind of icon that will later be used to navigate to another screen.
-
-Users should be able to scroll through the genres.
-
-Another thing to note is that the Genres will NEVER change. 
-
-https://github.com/TimelineInteractive/react-native-interview/blob/master/screen-images/genres-list.png
+1. Create a screen that displays a list of genres. The endpoint http://localhost/genres is already provided for you. You can style the list any way that you like. You will need to make sure that each list item has some kind of icon that will later be used to navigate to another screen. Users should be able to scroll through the genres. Another thing to note is that the Genres will NEVER change. 
+![Genres List](/screen-images/genres-list.png)
+Format: ![Alt Text](url)
 
 
 
