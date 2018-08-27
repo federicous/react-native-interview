@@ -24,8 +24,9 @@ Next are the requirements. It will be helpful to read all the requirements befor
 ![Genres List](/screen-images/genres-list.png)
 
 
+2. Next we want to see all of the movies for any given genre when a user clicks on the icon to the right of the  Unfortunately there isn’t an endpoint that lets you filter the data you get back from an endpoint. This means you’ll have to filter the results yourself each time.Just like before you can style the list any way that you like. And just as before you will need to make sure that each list item has some kind of icon that will later be used to navigate to another screen.The user should be able to navigate back to the list of genres from this screen.
 
-
+![Genres List](/screen-images/movies-list.png)
 
   
 
