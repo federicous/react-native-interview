@@ -1,4 +1,4 @@
-## Ruby on Rails Take Home Interview
+## React Native Technical Interview
 
 The objective of this take home interview project is to develop a movie browsing app. 
 You are given 2 endpoints:
