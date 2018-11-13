@@ -1,6 +1,6 @@
 ## React Native Technical Interview
 
-The objective of this take home interview project is to develop a movie browsing app. 
+The objective of this technical interview is to develop a movie browsing app. 
 You are given 2 endpoints:
 - `localhost:3000/movies` - Gives a list of movies with their details.
 - `localhost:3000/genres` - Gives a list of movie genre names.
