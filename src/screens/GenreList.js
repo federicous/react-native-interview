@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/AntDesign';
+
+console.log(Icon)
+
 
 export default class GenreList extends Component {
 
@@ -26,12 +31,24 @@ export default class GenreList extends Component {
 		}
 	}
 
+	goToMovieList = () => this.props.navigation.push('MovieList', { poop: 'paap' })
+
 	renderItem = (item) => {
 		
 		return (
-			<View style={styles.rowItem}>
-				<Text>{item.key}</Text>
-				<Button title="click me" onPress={()=>this.props.navigation.push('MovieList', { poop: 'paap' })}/>
+			<View style={styles.rowContainer}>
+				<View style={styles.titleContainer}>
+					<Text style={styles.title}>{item.key}</Text>
+				</View>
+				<View style={styles.iconContainer}>
+					<TouchableOpacity onPress={this.goToMovieList}>
+						<Icon
+							name='rightcircleo'
+							size={30}
+							color='#2d6bd6'
+						/>
+					</TouchableOpacity>
+				</View>
 			</View>
 		)
 	}
@@ -54,7 +71,22 @@ const styles = StyleSheet.create({
 	row: {
 		flex: 1
 	},
-	rowItem: {
-		borderColor: 'purple'
+	rowContainer: {
+		height: 50,
+		flexDirection: 'row',
+		borderWidth: 1
+	},
+	titleContainer: {
+		flex: 8,
+		justifyContent: "center"
+	},
+	title: {
+		textAlignVertical: 'bottom',
+		marginLeft: 5
+	},
+	iconContainer: {
+		flex: 2,
+		alignItems: 'center',
+		justifyContent: 'center'
 	}
 })
