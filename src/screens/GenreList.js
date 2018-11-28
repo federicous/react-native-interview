@@ -3,6 +3,11 @@ import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
 
 export default class GenreList extends Component {
 
+	static navigationOptions = ({ navigation }) => ({
+		headerTitle: <Text>{navigation.state.routeName}</Text>
+	});
+
+
 	state = {
 		genres: []
 	}
@@ -26,7 +31,7 @@ export default class GenreList extends Component {
 		return (
 			<View style={styles.rowItem}>
 				<Text>{item.key}</Text>
-				<Button title="click me" onPress={()=>console.log('PRESSED')}/>
+				<Button title="click me" onPress={()=>this.props.navigation.push('MovieList', { poop: 'paap' })}/>
 			</View>
 		)
 	}

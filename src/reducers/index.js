@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
 import movies from './movies.reducer';
 
-const rootReducer = combineReducers({
-	movies
-});
+const getRootReducer = (navReducer) => {
 
-export default rootReducer;
+	return combineReducers({
+		movies,
+		nav: navReducer
+	});
+};
+
+export default getRootReducer;

@@ -1,35 +1,19 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import { Provider, connect } from 'react-redux';
-// import getStore from './src/config/store';
+import App, { navReducer } from './src';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import getStore from './src/config/store';
 
-import GenreList from './src/screens/genres';
 
-// const store = getStore();
 
-export default class App extends Component {
-  render() {
-    return (
-      <GenreList></GenreList>
-    );
-  }
-}
+const { store, persistor } = getStore(navReducer);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'red',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default Index = () => { //eslint-disable-line no-undef
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  );
+};
