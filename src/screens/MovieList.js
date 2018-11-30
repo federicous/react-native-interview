@@ -2,32 +2,24 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { connect } from 'react-redux';
+import { getMovies } from '../actions/movies.actions';
 
-export default class MovieList extends Component {
+
+class MovieList extends Component {
 
 	static navigationOptions = ({ navigation }) => ({
 		headerTitle: <Text>{navigation.getParam('genre')}</Text>
 	});
 
-	state = {
-		movies: []
-	}
-
 	componentDidMount() {
-		if(this.state.movies.length === 0) {
-			fetch('http://localhost:3000/movies')
-				.then(res => res.json())
-				.then(movies => {
-					this.setState({ movies })
-				})
-				.catch(err => {
-					console.log('Error: ', err);
-				})
+		if(this.props.movies.length === 0) {
+			this.props.getMovies();
 		}
 	}
 
 	getMoviesData = () => {
-		const fullData = this.state.movies;
+		const fullData = this.props.movies;
 		const filter   = this.props.navigation.getParam('genre');
 		return fullData.filter(el => el.genres.some(g => g === filter));
 	}
@@ -68,6 +60,17 @@ export default class MovieList extends Component {
 		);
 	}
 }	
+
+
+const mapStateToProps = (state) => ({
+	movies: state.movies.movies
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	getMovies: () => dispatch(getMovies())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
 
 
 const styles = StyleSheet.create({

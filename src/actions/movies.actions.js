@@ -16,8 +16,7 @@ const setMovies = (movies) => ({
 export const getGenres = () => {
 	return async (dispatch) => {
 		try {
-			console.log('FETCHING GENRES')
-			const genres = await movieService.getGenres();
+			const genres = await movieService.fetchGenres();
 			const genreObjects = genres.map((el, i) => { return { key: el  } });
 
 			dispatch(setGenres(genreObjects));
@@ -31,7 +30,7 @@ export const getGenres = () => {
 export const getMovies = () => {
 	return async (dispatch) => {
 		try {
-			const movies = movieService.getMovies();
+			const movies = await movieService.fetchMovies();
 			dispatch(setMovies(movies));
 		}catch(e){
 			console.log('GET_MOVIES', e);
