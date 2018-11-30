@@ -18,8 +18,6 @@ export default class MovieList extends Component {
 			fetch('http://localhost:3000/movies')
 				.then(res => res.json())
 				.then(movies => {
-					// const genreObjects = movies.map((el, i) => { return { key: el  } });
-
 					this.setState({ movies })
 				})
 				.catch(err => {

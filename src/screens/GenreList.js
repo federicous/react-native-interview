@@ -2,37 +2,25 @@ import React, { Component } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { connect } from 'react-redux';
+import { getGenres } from '../actions/movies.actions';
 
 
-export default class GenreList extends Component {
+class GenreList extends Component {
 
 	static navigationOptions = ({ navigation }) => ({
 		headerTitle: <Text>{navigation.state.routeName}</Text>
 	});
 
-
-	state = {
-		genres: []
-	}
-
 	componentDidMount() {
-		if(this.state.genres.length === 0) {
-			fetch('http://localhost:3000/genres')
-				.then(res => res.json())
-				.then(genres => {
-					const genreObjects = genres.map((el, i) => { return { key: el  } });
-					this.setState({ genres:  genreObjects })
-				})
-				.catch(err => {
-					console.log('Error: ', err);
-				})
+		if(this.props.genres.length === 0) {
+			this.props.getGenres();
 		}
 	}
 
 	goToMovieList = (genre) => this.props.navigation.push('MovieList', { genre })
 
 	renderItem = (item) => {
-		
 		return (
 			<View style={styles.rowContainer}>
 				<View style={styles.titleContainer}>
@@ -55,7 +43,7 @@ export default class GenreList extends Component {
 		return (
 			<View style={styles.container}>
 				<FlatList
-					data={this.state.genres}
+					data={this.props.genres}
 					renderItem={({item}) => this.renderItem(item)}
 				/>
 			</View>
@@ -63,6 +51,16 @@ export default class GenreList extends Component {
 	}
 
 }
+
+const mapStateToProps = (state) => ({
+	genres: state.movies.genres //Selector might not be needed for now
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	getGenres: () => dispatch(getGenres())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenreList);
 
 
 const styles = StyleSheet.create({
