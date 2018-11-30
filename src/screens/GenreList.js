@@ -3,8 +3,6 @@ import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-console.log(Icon)
-
 
 export default class GenreList extends Component {
 
@@ -31,7 +29,7 @@ export default class GenreList extends Component {
 		}
 	}
 
-	goToMovieList = () => this.props.navigation.push('MovieList', { poop: 'paap' })
+	goToMovieList = (genre) => this.props.navigation.push('MovieList', { genre })
 
 	renderItem = (item) => {
 		
@@ -41,7 +39,7 @@ export default class GenreList extends Component {
 					<Text style={styles.title}>{item.key}</Text>
 				</View>
 				<View style={styles.iconContainer}>
-					<TouchableOpacity onPress={this.goToMovieList}>
+					<TouchableOpacity onPress={()=>this.goToMovieList(item.key)}>
 						<Icon
 							name='rightcircleo'
 							size={30}
@@ -55,7 +53,7 @@ export default class GenreList extends Component {
 
 	render(){
 		return (
-			<View style={styles.row}>
+			<View style={styles.container}>
 				<FlatList
 					data={this.state.genres}
 					renderItem={({item}) => this.renderItem(item)}
@@ -68,7 +66,7 @@ export default class GenreList extends Component {
 
 
 const styles = StyleSheet.create({
-	row: {
+	container: {
 		flex: 1
 	},
 	rowContainer: {

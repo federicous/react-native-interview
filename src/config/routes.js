@@ -1,11 +1,11 @@
 import GenreList from "../screens/GenreList";
 import MovieList from '../screens/MovieList';
-import MovieDetail from '../screens/MovieDetails';
+import MovieDetails from '../screens/MovieDetails';
 
 const Routes  = {
 	GenreList,
 	MovieList,
-	MovieDetail
+	MovieDetails
 };
 
 export default Routes;
